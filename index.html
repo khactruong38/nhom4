@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megastar English</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        #random-number {
+            font-size: 24px;
+            margin-top: 100px;  
+        }
+        .container {
+            background: url();
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Chúc mừng nhóm của bạn đã nhận được:  <span id="random-number"> </span> phần quà</h2>
+    </div>
+    
+
+    <script>
+        // Hàm để tạo số ngẫu nhiên từ 1 đến 10
+        function generateRandomNumber() {
+            // Kiểm tra xem đã có số trong trình lưu trữ cục bộ hay chưa
+            let storedNumber = localStorage.getItem('randomNumber');
+            if (storedNumber) {
+                return parseInt(storedNumber);
+            } else {
+                const randomNumber = Math.floor(Math.random() * 4) + 1;
+                localStorage.setItem('randomNumber', randomNumber);
+                return randomNumber;
+            }
+        }
+
+        // Lấy thẻ p để hiển thị số ngẫu nhiên
+        const randomNumberElement = document.getElementById('random-number');
+
+        // Gán số ngẫu nhiên vào thẻ p
+        randomNumberElement.textContent = generateRandomNumber();
+    </script>
+</body>
+</html>
